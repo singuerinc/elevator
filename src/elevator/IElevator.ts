@@ -1,7 +1,10 @@
-import { Command } from "./Command";
+import { TaskPack } from "./TaskPack";
 
 export interface IElevator {
-  run(queue: Command[]);
-  setFloor(value: number);
+  run(queue: TaskPack[]);
+  cargo: number;
+  floor: number;
+  open(): Promise<boolean>;
+  close(): Promise<boolean>;
   doors: PIXI.Graphics;
 }

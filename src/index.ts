@@ -6,29 +6,37 @@ import {
   CloseDoorsTask,
   WaitTask,
   UpdateFloorNumberTask,
-  PlayBellTask
-} from "./elevator/index";
+  PlayBellTask,
+  PeopleInTask,
+  PeopleOutTask
+} from "./elevator/tasks";
 import { IElevator } from "./elevator/IElevator";
-import { Command } from "./elevator/Command";
+import { TaskPack } from "./elevator/TaskPack";
 import { Elevator } from "./elevator/Elevator";
 
 const upFactory = (el: IElevator) => (floor: number) =>
-  new Command(el, [
+  new TaskPack(el, [
+    new OpenDoorsTask(),
+    new PeopleInTask(3),
     new CloseDoorsTask(),
-    new MoveUpTask(),
+    new MoveUpTask(floor),
     new UpdateFloorNumberTask(floor),
     new PlayBellTask(),
     new OpenDoorsTask(),
+    new PeopleOutTask(1),
     new WaitTask()
   ]);
 
 const downFactory = (el: IElevator) => (floor: number) =>
-  new Command(el, [
+  new TaskPack(el, [
+    new OpenDoorsTask(),
+    new PeopleInTask(2),
     new CloseDoorsTask(),
-    new MoveDownTask(),
+    new MoveDownTask(floor),
     new UpdateFloorNumberTask(floor),
     new PlayBellTask(),
     new OpenDoorsTask(),
+    new PeopleOutTask(4),
     new WaitTask()
   ]);
 
