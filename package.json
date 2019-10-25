@@ -5,12 +5,12 @@
   "keywords": [],
   "main": "src/index.ts",
   "dependencies": {
-    "animejs": "3.0.1",
-    "pixi.js": "5.0.4"
+    "animejs": "3.1.0",
+    "pixi.js": "5.1.5"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.3",
-    "typescript": "3.3.3"
+    "parcel-bundler": "^1.12.4",
+    "typescript": "3.6.4"
   },
   "scripts": {
     "start": "parcel ./public/index.html"
